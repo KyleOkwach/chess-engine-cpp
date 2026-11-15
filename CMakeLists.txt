@@ -14,8 +14,8 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     "${CMAKE_SOURCE_DIR}/src/*.cpp"
 )
 
-# Find SDL3 package on the system
-find_package(SDL3 REQUIRED)
+# Find raylib package on the system
+find_package(raylib REQUIRED)
 
 # Define the executable
 add_executable(chess ${SOURCES})
@@ -27,8 +27,8 @@ target_include_directories(chess PRIVATE
     ${CMAKE_SOURCE_DIR}/src/frontend
 )
 
-# Link SDL3 using its modern namespaced target
-target_link_libraries(chess PRIVATE SDL3::SDL3)
+# Link raylib using its standard modern target
+target_link_libraries(chess PRIVATE raylib)
 
 # Compiler flags and Sanitizers
 if(MSVC)

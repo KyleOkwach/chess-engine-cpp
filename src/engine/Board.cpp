@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cctype>
 
-Board::Board() {
+engine::Board::Board() {
     // Clear out everything on initialization
     for (int c = 0; c < 2; ++c) {
         for (int p = 0; p < 6; ++p) pieces[c][p] = 0ULL;
@@ -11,7 +11,7 @@ Board::Board() {
     occupancies[WHITE] = occupancies[BLACK] = occupancies[BOTH] = 0ULL;
 }
 
-void Board::update_occupancies() {
+void engine::Board::update_occupancies() {
     occupancies[WHITE] = 0;
     occupancies[BLACK] = 0;
     for (int p = PAWN; p <= KING; ++p) {
@@ -21,7 +21,7 @@ void Board::update_occupancies() {
     occupancies[BOTH] = occupancies[WHITE] | occupancies[BLACK];
 }
 
-void Board::parse_fen(const std::string& fen) {
+void engine::Board::parse_fen(const std::string& fen) {
     // Reset state before loading a new FEN
     *this = Board();
     
@@ -59,7 +59,7 @@ void Board::parse_fen(const std::string& fen) {
     update_occupancies();
 }
 
-void Board::print() const {
+void engine::Board::print() const {
     std::cout << "\n";
     // Loop backwards from Rank 8 down to Rank 1
     for (int rank = 7; rank >= 0; --rank) {

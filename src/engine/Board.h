@@ -2,6 +2,7 @@
 #include "Types.h"
 #include <string>
 
+namespace engine {
 class Board {
 private:
     // 2 colors x 6 piece types = 12 bitboards
@@ -17,3 +18,4 @@ public:
     void parse_fen(const std::string& fen);
     void print() const;
 };
+}
